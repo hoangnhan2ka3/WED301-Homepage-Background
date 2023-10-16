@@ -1,0 +1,418 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/de261470fa.js" crossorigin="anonymous"></script>
+<title>HoloGaze</title>
+</head>	
+<style>
+	* {
+		margin: 0;
+    	padding: 0;
+		font-family: 'Rajdhani', sans-serif;
+	}
+	.home{
+		width: 100%;
+		height: 100vh;
+		background-color: #0F041C;
+		box-sizing: border-box;
+		position: relative;
+		overflow: hidden;
+	}
+	.nav{
+		width: 100%;
+		position: relative;
+		z-index: 2;
+		position: absolute;
+	}
+	.nav-container{
+		width: 100%;
+		height: 130px;
+		max-width: 1691px;
+		min-width: 1600px;
+		margin: 0 auto;
+	}
+	.background-image{
+		width: 100%;
+		position: absolute;
+		top: 0;
+		max-width: 880%;
+		margin: 0 auto;
+	}
+	.background-image img{
+		width: 100%;
+		object-fit: cover;
+		
+	}
+	.not-logo{
+		height: 100%;
+		align-items: center;
+		display: flex;
+		justify-content: space-between;
+		padding: 0 12%;
+		box-sizing: border-box;
+	}
+	.menu{
+		font-family: 'Rajdhani', sans-serif;
+		color: white;
+		display: flex;
+	}
+	.menu a{
+		margin-right: 32px;
+		color: white;
+		opacity: 80%;
+		text-decoration: none;
+		position: relative;
+		z-index: 2;
+	}
+	.menu a::after {
+		content: "";
+		position: absolute;
+		left: 0;
+		bottom: -6px;
+		width: 100%;
+		height: 2px;
+		border-radius: 6px;
+		background: white;
+		transform: scaleX(0); /* Ban đầu ẩn underline */
+		transform-origin: right;
+		transition: transform 0.5s;
+	}
+
+	.menu a:hover:after {
+    	transform: scaleX(1);
+		transform-origin: left;
+	}
+	.logo {
+	  display: flex;
+	  justify-content: center;
+	  width: 100px;
+	  margin: 0 auto; /* Để căn giữa ngang */
+	}
+
+	.logo a{
+		margin-top: -74px;
+		width: 100%;
+		position: relative;
+		z-index: 1;
+		transition: transform 0.3s;
+		transform: scale(1);
+	}
+	.logo a:hover{
+		transform: scale(1.3);
+	}
+	.input {
+		width: 100%;
+		background-color: transparent;
+		font-weight: 600;
+		border: none;
+		margin-left: 20px;
+		color: white;
+		font-size: 18px;
+		z-index: 2;
+	}
+	.input::placeholder{
+		color: #7B678A;
+		font-size: 16px;
+	}
+	.input:focus{
+		background-color: transparent;
+  		outline: none;
+	}
+	.nav-right{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.search-area{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		border: none;
+		width: 336px;
+		height: 46px;
+		border-radius: 6px;
+		font-weight: 600;
+		background-color: rgba(255,255,255,0.1);
+		position: relative;
+		z-index: 2;
+		overflow: hidden;
+	}
+	.search-icon-pop{
+		width: 72px;
+		height: 100%;
+	}
+	.search-icon-pop a{
+		color: #BEAFC3;	
+		width: 100%; /* Kích thước thẻ a bằng với .signup */
+    	height: 100%; /* Kích thước thẻ a bằng với .signup */
+		display: flex; /* Sử dụng flexbox */
+    	justify-content: center; /* Canh giữa theo chiều ngang */
+		text-decoration: none;
+    	align-items: center; /* Canh giữa theo chiều dọc */
+		position: relative;
+		z-index: 2;
+		transition: transform 0.3s;
+		transform: scale(1);
+	}
+	.search-icon-pop a:hover{
+		transform: scale(1.3);
+		color: white;
+	}
+	.cart{
+		width: 38px;
+		height: 36px;
+		color: #BEAFC3;
+		position: relative;
+		right: 0;
+		z-index: 2;
+	}
+	.cart a{
+		color: #BEAFC3;	
+		width: 100%; /* Kích thước thẻ a bằng với .signup */
+    	height: 100%; /* Kích thước thẻ a bằng với .signup */
+		display: flex; /* Sử dụng flexbox */
+    	justify-content:flex-end; /* Canh giữa theo chiều ngang */
+		text-decoration: none;
+    	align-items: center; /* Canh giữa theo chiều dọc */
+		transition: transform 0.3s;
+		transform: scale(1);
+		position: relative;
+		z-index: 2;
+	}
+	.cart a:hover{
+		transform: scale(1.3);
+		color: white;
+		position: relative;
+		z-index: 2;
+	}
+	.hero{
+		width: 100%;
+		position: relative;
+		z-index: 1;	
+		max-width: 1691px;
+		min-width: 1600px;
+		margin: 0 auto;
+	}
+	.hero-container{	
+		width: 100%;
+		height: 720px;
+		padding: 0px 12% 0 12%;
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+		box-sizing: border-box;
+	}
+	.glass{
+		position: relative;
+		z-index: 1;
+		transition: transform 0.3s;
+		transform: scale(1);
+	}
+	.glass:hover{
+		transform: scale(0.8);
+	}
+	.hero-button{
+		margin-top: -55px;
+		position: relative;
+		z-index: 1;
+	}
+	.hero-right{
+		align-items: flex-end;
+		align-content: flex-end;
+	}
+	.visit-store{
+		width: 136px;
+		height: 56px;
+		border-radius: 6px;
+		border: none;
+		background-color: #3DDEED;
+		margin-right: 20px;
+		padding: 0;
+		transition: background-color 0.25s;
+	}
+	.visit-store a{
+		color: black;
+		text-decoration: none;
+		font-weight: 600;
+		font-size: 18px;
+		width: 100%; /* Kích thước thẻ a bằng với .signup */
+    	height: 100%; /* Kích thước thẻ a bằng với .signup */
+		display: flex; /* Sử dụng flexbox */
+    	justify-content: center; /* Canh giữa theo chiều ngang */
+    	align-items: center; /* Canh giữa theo chiều dọc */
+	}
+	.visit-store:hover{
+    	background-color: white; /* Màu xám khi di chuột vào */
+		box-shadow: 0 0 300px 0 rgba(255, 255, 255, 0.6); /* Shadow khi hover */
+	}
+	
+	.visit-store:hover a{
+    	color: #3DDEED; /* Màu chữ xanh khi di chuột vào */
+		font-weight: 700;
+	}
+	.explore{
+		width: 109px;
+		height: 56px;
+		border-radius: 6px;
+		border-color: rgba(255,255,255,0.2);
+		background-color: transparent;
+		transition: border-color 0.25s;
+	}
+	.explore a{
+		color: white;
+		text-decoration: none;
+		font-weight: 500;
+		font-size: 18px;
+		width: 100%; /* Kích thước thẻ a bằng với .signup */
+    	height: 100%; /* Kích thước thẻ a bằng với .signup */
+		display: flex; /* Sử dụng flexbox */
+    	justify-content: center; /* Canh giữa theo chiều ngang */
+    	align-items: center; /* Canh giữa theo chiều dọc */
+	}
+	.explore:hover{
+		border-color: #3DDEED;
+		box-shadow: 0 0 50px 0 rgba(255, 255, 255, 0.4); /* Shadow khi hover */
+	}
+	
+	.explore:hover a{
+    	color: #3DDEED; /* Màu chữ xanh khi di chuột vào */
+		font-weight: 700;
+	}
+	.hero-right li{
+		color: white;
+		width: 570px;
+	}
+	.hero-right p{
+		transform: translateX(-40px);
+		color: white;
+		width: 580px;
+	}
+	.hero-below{
+		display: flex;
+		justify-content: space-between;
+		position: relative;
+	}
+	.title{
+		font-size: 56px;
+		font-weight: 700;
+		line-height: 1.2;
+		margin-bottom: 10px;
+	}
+	.left-column li{
+		font-weight: 400;
+		width: 258px;
+		margin-top: 30px;
+		line-height: 1.4;
+		list-style: none;
+	}
+	.left-column li::before{
+		content: ""; /* Tạo một phần tử pseudo-element trước li */
+		width: 22px; /* Đây là kích thước của hình ảnh list-style */
+		height: 22px;
+		background-image: url("images/Star.png"); /* Đường dẫn đến hình ảnh của list-style */
+		background-size: cover; /* Tùy chỉnh kích thước hình ảnh để nó lớn hơn văn bản */
+		position: absolute;
+		z-index: 2;
+		left: -38px;
+		transform: rotate(0);
+		transition: transform 0.3s;
+	}
+	.left-column li:hover::before{
+		transform: rotate(180deg);
+		box-shadow: 0 0 50px 0 rgba(255, 255, 255, 0.4); /* Shadow khi hover */
+		}
+	.right-column li{
+		font-weight: 400;
+		width: 258px;
+		margin-top: 30px;
+		list-style: none;
+		line-height: 1.4;
+	}
+	.right-column li::before{
+		content: ""; /* Tạo một phần tử pseudo-element trước li */
+		width: 22px; /* Đây là kích thước của hình ảnh list-style */
+		height: 22px;
+		background-image: url("images/Star.png"); /* Đường dẫn đến hình ảnh của list-style */
+		background-size: cover; /* Tùy chỉnh kích thước hình ảnh để nó lớn hơn văn bản */
+		position: absolute;
+		z-index: 2;
+		left: 283px;
+		transform: rotate(0);
+		transition: transform 0.3s;
+	}
+	.right-column li:hover::before{
+		transform: rotate(180deg);
+		box-shadow: 0 0 50px 0 rgba(255, 255, 255, 0.4); /* Shadow khi hover */
+		}
+</style>
+<body id="body">
+	<div class="home">
+		<div class="nav">
+			<div class="nav-container">
+				<div class="not-logo">
+					<div class="menu">
+						<a href="#">Home</a>
+						<a href="#">Catalog</a>
+						<a href="#">Contact</a>
+						<a href="#">Features</a>
+					</div>
+					<div class="nav-right">
+						<div class="search-area">
+							<input class="input" type="text" placeholder="Search games & products...">
+							<div class="search-icon-pop">
+							<a href="#"><i class="fa-solid fa-magnifying-glass search-icon"></i></a>
+							</div>
+						</div>
+						<div class="cart">
+							<a href="#"><i class="fa-solid fa-basket-shopping cart-icon"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="logo">
+					<a href="#"><img src="images/Logo.png" width="104px" alt="HoloGaze Logo"></a>
+				</div>
+			</div>
+		</div>
+		<div class="hero">
+			<div class="hero-container">
+				<div class="hero-left">
+					<div class="glass">
+						<img src="images/Glass.png" width="560px" alt="HoloGaze Glass">
+					</div>
+					<div class="hero-button">
+						<button class="visit-store"><a href="#">Visit store</a></button>
+						<button class="explore"><a href="#">Explore</a></button>
+					</div>
+				</div>
+				<div class="hero-right">
+					<p class="title">
+						Our Virtual Headsets<br>Shine with Unique<br>Features!
+					</p>
+					<div class="hero-below">
+						<ul class="left-column">
+							<li>High-resolution OLED or LCD screens: Provide sharp and clear visuals.</li>
+							<li>Inside-out tracking: Built-in sensors (cameras or other sensors).</li>
+							<li>High-resolution OLED or LCD screens: Provide sharp and clear visuals.</li>
+						</ul>
+						<ul class="right-column">
+							<li>Refresh rate: Higher refresh rates reduce motion sickness and provide.</li>
+							<li>Eye tracking: Monitors the movement of the user's eyes, allowing for more.</li>
+							<li>Refresh rate: Higher refresh rates reduce motion sickness and provide.</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="background">
+			<div class="background-image">
+				<img src="images/Graphic.png" width="2414" alt="">
+			</div>
+		</div>
+	</div>
+</body>
+</html>
