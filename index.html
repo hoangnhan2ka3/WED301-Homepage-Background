@@ -16,8 +16,8 @@
 		font-family: 'Rajdhani', sans-serif;
 	}
 	.home{
-		width: 100%;
 		height: 100vh;
+		width: 100%;
 		background-color: #0F041C;
 		box-sizing: border-box;
 		position: relative;
@@ -27,13 +27,11 @@
 		width: 100%;
 		position: relative;
 		z-index: 2;
-		position: absolute;
 	}
 	.nav-container{
 		width: 100%;
 		height: 130px;
 		max-width: 1691px;
-		min-width: 1600px;
 		margin: 0 auto;
 	}
 	.background-image{
@@ -45,23 +43,30 @@
 	}
 	.background-image img{
 		width: 100%;
-		object-fit: cover;
-		
+		object-fit: cover;	
 	}
 	.not-logo{
 		height: 100%;
 		align-items: center;
 		display: flex;
 		justify-content: space-between;
-		padding: 0 12%;
+		padding: 0 8%;
 		box-sizing: border-box;
 	}
 	.menu{
 		font-family: 'Rajdhani', sans-serif;
-		color: white;
 		display: flex;
 	}
-	.menu a{
+	.menu-icon{
+		display: none;
+		color: #BEAFC3;
+		opacity: 80%;
+		text-decoration: none;
+		position: relative;
+		z-index: 2;
+	}
+	.menu-text{
+		display: none;
 		margin-right: 32px;
 		color: white;
 		opacity: 80%;
@@ -69,7 +74,7 @@
 		position: relative;
 		z-index: 2;
 	}
-	.menu a::after {
+	.menu-text::after {
 		content: "";
 		position: absolute;
 		left: 0;
@@ -83,7 +88,7 @@
 		transition: transform 0.5s;
 	}
 
-	.menu a:hover:after {
+	.menu-text:hover:after {
     	transform: scaleX(1);
 		transform-origin: left;
 	}
@@ -195,13 +200,12 @@
 		position: relative;
 		z-index: 1;	
 		max-width: 1691px;
-		min-width: 1600px;
 		margin: 0 auto;
 	}
 	.hero-container{	
 		width: 100%;
-		height: 720px;
-		padding: 0px 12% 0 12%;
+		height: 600px;
+		padding: 0px 8% 0 8%;
 		display: flex;
 		justify-content: space-between;
 		align-items: flex-end;
@@ -216,7 +220,11 @@
 	.glass:hover{
 		transform: scale(0.8);
 	}
+	.glass img{
+		width: 560px;
+	}
 	.hero-button{
+		display: flex;
 		margin-top: -55px;
 		position: relative;
 		z-index: 1;
@@ -259,12 +267,14 @@
 		width: 109px;
 		height: 56px;
 		border-radius: 6px;
+		border: 2px solid;
 		border-color: rgba(255,255,255,0.2);
 		background-color: transparent;
 		transition: border-color 0.25s;
 	}
 	.explore a{
 		color: white;
+		border: none;
 		text-decoration: none;
 		font-weight: 500;
 		font-size: 18px;
@@ -273,6 +283,7 @@
 		display: flex; /* Sử dụng flexbox */
     	justify-content: center; /* Canh giữa theo chiều ngang */
     	align-items: center; /* Canh giữa theo chiều dọc */
+		transition: font-weight .1s;
 	}
 	.explore:hover{
 		border-color: #3DDEED;
@@ -348,7 +359,169 @@
 	.right-column li:hover::before{
 		transform: rotate(180deg);
 		box-shadow: 0 0 50px 0 rgba(255, 255, 255, 0.4); /* Shadow khi hover */
-		}
+	}
+
+
+
+	@media only screen and (max-width: 768px){
+	body{
+		min-width: 360px;
+	}
+	.home{
+		height: fit-content;
+	}
+	.menu-text{
+		display: none;
+	}
+	.menu-icon{
+		display: block;
+	}
+	.search-area{
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		width: 336px;
+		height: 46px;
+		background-color: transparent;
+	}
+	.search-area input{
+		display: none;
+	}
+	.hero-container{
+		height: fit-content;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
+		margin-bottom: 100px;
+	}
+	.hero-left{
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	.hero-button{
+		width: 100%;
+		margin: 0 8%;
+		flex-direction: column;
+		margin-bottom: 100px;
+	}
+	.visit-store{
+		width: 100%;
+		margin-bottom: 20px;
+	}
+	.explore{
+		width: 100%;
+	}
+	.glass img{
+		transform: translateX(-25px);
+	}
+	.hero-right{
+		width: 100%;
+	}
+	.hero-right p{
+		width: 100%;
+		transform: translateX(0px);
+	}
+	.title{
+		width: 100%;
+	}
+	.hero-below{
+		display: block;
+	}
+	.left-column li{
+		transform: translateX(38px);
+		width: calc(100% - 38px);
+	}
+	.right-column li{
+		transform: translateX(38px);
+		width: calc(100% - 38px);
+	}
+	.right-column li::before{
+		left: -38px;
+	}
+	
+}
+
+
+@media only screen and (min-width:769px) and (max-width:1200px){
+	.home{
+		height: fit-content;
+	}
+	.menu-text{
+		display: none;
+	}
+	.menu-icon{
+		display: block;
+	}
+	.search-area{
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		width: 336px;
+		height: 46px;
+		background-color: transparent;
+	}
+	.search-area input{
+		display: none;
+	}
+	.hero-container{
+		height: 1220px;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
+	}
+	.hero-left{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	.hero-button{
+		margin-bottom: 100px;
+	}
+	.glass img{
+		transform: translateX(-25px);
+	}
+	.hero-right{
+		width: 100%;
+	}
+	.hero-right p{
+		width: 100%;
+		transform: translateX(0px);
+	}
+	.title{
+		width: 100%;
+	}
+	.hero-below{
+		display: block;
+	}
+	.left-column li{
+		transform: translateX(38px);
+		width: 100%;
+	}
+	.right-column li{
+		transform: translateX(38px);
+		width: 100%;
+	}
+	.right-column li::before{
+		left: -38px;
+	}
+}
+
+
+@media only screen  and (min-width:1201px){
+	body{
+		max-width: 1690px;
+		margin: 0 auto;
+	}
+	.menu-text{
+		display: block;
+	}
+}
+
+
 </style>
 <body id="body">
 	<div class="home">
@@ -356,10 +529,11 @@
 			<div class="nav-container">
 				<div class="not-logo">
 					<div class="menu">
-						<a href="#">Home</a>
-						<a href="#">Catalog</a>
-						<a href="#">Contact</a>
-						<a href="#">Features</a>
+						<a class="menu-text" href="#">Home</a>
+						<a class="menu-text" href="#">Catalog</a>
+						<a class="menu-text" href="#">Contact</a>
+						<a class="menu-text" href="#">Features</a>
+						<a class="menu-icon" href="#"><i class="fa-solid fa-bars-staggered"></i></a>
 					</div>
 					<div class="nav-right">
 						<div class="search-area">
@@ -382,7 +556,7 @@
 			<div class="hero-container">
 				<div class="hero-left">
 					<div class="glass">
-						<img src="images/Glass.png" width="560px" alt="HoloGaze Glass">
+						<img src="images/Glass.png" alt="HoloGaze Glass">
 					</div>
 					<div class="hero-button">
 						<button class="visit-store"><a href="#">Visit store</a></button>
@@ -391,7 +565,7 @@
 				</div>
 				<div class="hero-right">
 					<p class="title">
-						Our Virtual Headsets<br>Shine with Unique<br>Features!
+						Our Virtual Headsets Shine with Unique Features!
 					</p>
 					<div class="hero-below">
 						<ul class="left-column">
